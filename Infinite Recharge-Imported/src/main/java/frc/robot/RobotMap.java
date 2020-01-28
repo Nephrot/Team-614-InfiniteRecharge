@@ -58,6 +58,14 @@ public class RobotMap {
   public static final double kD = 0;
   public static final double kF = 0;
 
+
+
+  //Climber 
+  public static final int climberMotorPort = 13;
+  public static final int climberMotorPortTwo = 15;
+
+  //intake
+  public static final int intakeMotor = 14;
   //Vision 
   public static final double limelightToTarget = 25.7;
   public static final double vPValue = 0.1;

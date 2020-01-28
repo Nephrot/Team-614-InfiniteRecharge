@@ -8,6 +8,7 @@
 package frc.robot;
 import com.fasterxml.jackson.databind.deser.impl.SetterlessProperty;
 
+
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -20,6 +21,10 @@ import frc.robot.commands.misc.BlinkForATime;
 import frc.robot.commands.shooter.SetSpeed;
 import frc.robot.commands.shooter.SetSpeedButton;
 import frc.robot.commands.chassis.RotateToAngle;
+import frc.robot.commands.climber.RunClimber;
+import frc.robot.commands.intake.runIntake;
+import frc.robot.commands.climber.ReverseClimber;
+import frc.robot.commands.intake.runOuttake;
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -52,9 +57,55 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
+  public static final int AButton = 1;
 
-  public static final XboxController driverController = new XboxController(RobotMap.driverPort);
-  public static final XboxController operatorController = new XboxController(RobotMap.operatorPort);
+	public static final int BButton = 2;
+
+	public static final int XButton = 3;
+
+	public static final int YButton = 4;
+
+	public static final int LeftBumper = 5;
+
+	public static final int RightBumper = 6;
+
+	public static final int BackButton = 7;
+
+	public static final int StartButton = 8;
+
+	public static final int LeftStick = 9;
+	public static final int RightStick = 10;
+
+  public static final XboxController driverController = new XboxController(0);
+	public static final XboxController operatorController = new XboxController(2);
+
+
+  // y button
+  public static final Button clamper = new JoystickButton(operatorController, YButton);
+  
+  //b button
+	public static final Button setSpeedSpooler = new JoystickButton(operatorController, BButton);
+  
+  //x button
+  public static final Button runOuttake = new JoystickButton(driverController, XButton);
+  
+  //A button
+	public static final Button setPosition = new JoystickButton(driverController, AButton);
+
+  //b button
+  public static final Button RunClimber = new JoystickButton(driverController, BButton);
+
+  //a button
+  public static final Button ReverseClimber = new JoystickButton(driverController, AButton);
+  
+  //y button
+  public static final Button runIntake = new JoystickButton(driverController, YButton);
+  
+  //Left bumper
+	public static final Button toggleUmbrella = new JoystickButton(driverController, LeftBumper);
+
+	
+
 
   // public static final Button followPath = new JoystickButton(driverController, RobotMap.YButton);
   public static final Button coastMode = new JoystickButton(driverController, RobotMap.RightBumper);
@@ -62,6 +113,9 @@ public class OI {
   public OI() {
     // followPath.whenPressed(new LeftPath());
     coastMode.whileHeld(new SetSpeed(0.5));
-
-  }
+    RunClimber.whileHeld(new RunClimber());
+    ReverseClimber.whileHeld(new ReverseClimber());
+    runIntake.whileHeld(new runIntake());
+    runOuttake.whileHeld(new runOuttake());
+  };
 }

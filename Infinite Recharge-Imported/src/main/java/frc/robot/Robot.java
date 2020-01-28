@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.chassis.Drivetrain;
 import frc.robot.subsystems.Vision;
 import frc.robot.subsystems.shooter.Shooter;
+import frc.robot.subsystems.intake.Intake;
 
 import com.kauailabs.navx.frc.AHRS;
 import com.revrobotics.CANSparkMax;
@@ -25,6 +26,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.SPI;
 
 import frc.robot.subsystems.feeder.Feeder;
+import frc.robot.subsystems.climber.Climber;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -42,6 +44,8 @@ public class Robot extends TimedRobot {
   public static Vision m_limelight;
   public static Feeder m_feeder;
   public static OI m_oi;
+  public static Intake m_intake = new Intake();
+  public static Climber m_climber = new Climber();
 
   
   Command m_autonomousCommand;

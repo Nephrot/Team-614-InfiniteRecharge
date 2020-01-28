@@ -6,8 +6,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class DeliverGoalHigh extends Command {
-	public DeliverGoalHigh() {
+public class DeliverGoalLow extends Command {
+	public DeliverGoalLow() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.m_shooter);
@@ -15,12 +15,13 @@ public class DeliverGoalHigh extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		Robot.m_shooter.shooterMotor.set(0);
 
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-	  Robot.m_shooter.setShooterSpeed(RobotMap.highGoalSpeed);
+	  Robot.m_shooter.setShooterSpeed(RobotMap.lowGoalSpeed);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
