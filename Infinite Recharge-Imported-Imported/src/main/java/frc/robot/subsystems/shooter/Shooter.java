@@ -13,13 +13,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shooter extends Subsystem {
        public CANSparkMax shooterMotor;
-       public CANSparkMax intakeMotor;
+    //   public CANSparkMax intakeMotor;
     //    private CANPIDController pidController;
     //    private CANEncoder encoder;
 
        public Shooter() {
          shooterMotor = new CANSparkMax(RobotMap.shooterMotorPort, MotorType.kBrushless);
-         shooterMotor = new CANSparkMax(RobotMap.intakeMotorPort, MotorType.kBrushless);
+      //   shooterMotor = new CANSparkMax(RobotMap.intakeMotorPort, MotorType.kBrushless);
         //  pidController = shooterMotor.getPIDController();
         //  encoder = shooterMotor.getEncoder();
 
@@ -43,7 +43,7 @@ public class Shooter extends Subsystem {
        }
      
 
-       public void setIntakeSpeed(double speed) {
-           intakeMotor.set(speed);
-       }
+     //  public void setIntakeSpeed(double speed) {
+     //      intakeMotor.set(speed);
+     //  }
 }

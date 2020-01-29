@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.chassis.Drivetrain;
-import frc.robot.subsystems.Vision;
+import frc.robot.subsystems.vision.Vision;
 import frc.robot.subsystems.shooter.Shooter;
 import frc.robot.subsystems.intake.Intake;
 

@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.subsystems.Vision;
+import frc.robot.subsystems.vision.Vision;
 import frc.robot.subsystems.chassis.Drivetrain;
 
 public class DriveToTarget extends Command {
