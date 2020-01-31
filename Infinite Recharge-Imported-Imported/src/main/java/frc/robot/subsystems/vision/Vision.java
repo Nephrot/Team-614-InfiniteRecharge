@@ -16,7 +16,7 @@ public class Vision extends Subsystem {
         private NetworkTableEntry tx;
         private NetworkTableEntry ty;
         private NetworkTableEntry ta;
-        double x, y, area, targetDistance, tanY;
+        double x, y, area, targetDistance, tanY, camAngle;
     
         private NetworkTableEntry camMode;
         private NetworkTableEntry pipeline;
@@ -60,9 +60,9 @@ public class Vision extends Subsystem {
             ta = table.getEntry("ta");
             x = tx.getDouble(0.0);
             y = ty.getDouble(0.0);
+            camAngle = y + 15;
             area = ta.getDouble(0.0);  
             tanY = Math.tan(Math.toRadians(y));
-
             targetDistance = RobotMap.limelightToTarget/tanY; 
             return targetDistance;
         }
