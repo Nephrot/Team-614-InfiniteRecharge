@@ -28,10 +28,10 @@ public class RobotMap {
   // public static int rangefinderPort = 1;
 
   //Chassis
-  public static final int leftMotorAPort = 1;
-  public static final int leftMotorBPort = 2;
-  public static final int rightMotorAPort = 6;
-  public static final int rightMotorBPort = 7;
+  public static final int leftMotorAPort = 2;
+  public static final int leftMotorBPort = 4;
+  public static final int rightMotorAPort = 1;
+  public static final int rightMotorBPort = 3;
   public static final MotorType brushless = MotorType.kBrushless;
   public static final MotorType brushed = MotorType.kBrushed;
   public static final double ticksInARevolution = 10.659;

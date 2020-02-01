@@ -16,7 +16,7 @@ import frc.robot.subsystems.chassis.Drivetrain;
 import frc.robot.subsystems.vision.Vision;
 import frc.robot.subsystems.shooter.Shooter;
 import frc.robot.subsystems.intake.Intake;
-import frc.robot.subsystems.Pneumatics.*;
+//import frc.robot.subsystems.Pneumatics.*;
 
 import com.kauailabs.navx.frc.AHRS;
 import com.revrobotics.CANSparkMax;
