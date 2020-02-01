@@ -74,6 +74,9 @@ public class RobotMap {
   public static final double vMaxOutput = 0.5;
   public static final double highGoalDistance = 74.4;
   
+  //pneumatics
+	public static final int compressor = 0;
+
   //Misc
   public static final int feederMotorPort = 8;
   public static final int intakeMotorPort = 2;

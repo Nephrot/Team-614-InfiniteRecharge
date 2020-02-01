@@ -102,7 +102,9 @@ public class OI {
   public static final Button runIntake = new JoystickButton(driverController, YButton);
   
   //Left bumper
-	public static final Button toggleUmbrella = new JoystickButton(driverController, LeftBumper);
+  public static final Button toggleUmbrella = new JoystickButton(driverController, LeftBumper);
+  
+  public static final Button turnToTarget = new JoystickButton(driverController, RightBumper);
 
 	
 

@@ -62,7 +62,7 @@ public class Vision extends Subsystem {
             y = ty.getDouble(0.0);
             camAngle = y + 15;
             area = ta.getDouble(0.0);  
-            tanY = Math.tan(Math.toRadians(y));
+            tanY = Math.tan(Math.toRadians(camAngle));
             targetDistance = RobotMap.limelightToTarget/tanY; 
             return targetDistance;
         }
@@ -75,7 +75,7 @@ public class Vision extends Subsystem {
             x = tx.getDouble(0.0);
             y = ty.getDouble(0.0);
             area = ta.getDouble(0.0);  
-            tanY = Math.tan(Math.toRadians(y));
+            tanY = Math.tan(Math.toRadians(camAngle));
 
             targetDistance = RobotMap.limelightToTarget/tanY; 
             
