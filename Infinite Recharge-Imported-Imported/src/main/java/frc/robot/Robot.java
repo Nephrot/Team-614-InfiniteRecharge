@@ -18,6 +18,7 @@ import frc.robot.subsystems.shooter.Shooter;
 import frc.robot.subsystems.intake.Intake;
 
 import com.kauailabs.navx.frc.AHRS;
+
 import com.revrobotics.CANSparkMax;
 
 import edu.wpi.first.wpilibj.AddressableLED;
