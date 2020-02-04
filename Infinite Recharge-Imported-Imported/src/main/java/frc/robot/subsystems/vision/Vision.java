@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.commands.chassis.OutputCalculator;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -74,6 +73,7 @@ public class Vision extends Subsystem {
             ta = table.getEntry("ta");
             x = tx.getDouble(0.0);
             y = ty.getDouble(0.0);
+            camAngle = y + 15;
             area = ta.getDouble(0.0);  
             tanY = Math.tan(Math.toRadians(camAngle));
 
