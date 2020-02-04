@@ -194,6 +194,6 @@ public class Drivetrain extends Subsystem implements PIDOutput {
 	}
 
     public void initDefaultCommand() {
-        // setDefaultCommand(new ArcadeDrive());
+        setDefaultCommand(new ArcadeDrive());
     }
 }

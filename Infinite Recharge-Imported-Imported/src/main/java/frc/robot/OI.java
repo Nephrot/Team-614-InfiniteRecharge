@@ -112,15 +112,15 @@ public class OI {
 
 
   // public static final Button followPath = new JoystickButton(driverController, RobotMap.YButton);
-  public static final Button coastMode = new JoystickButton(driverController, RobotMap.RightBumper);
+  //public static final Button coastMode = new JoystickButton(driverController, RobotMap.RightBumper);
 
   public OI() {
     // followPath.whenPressed(new LeftPath());
-    coastMode.whileHeld(new SetSpeed(0.5));
+    //coastMode.whileHeld(new SetSpeed(0.5));
     RunClimber.whileHeld(new RunClimber());
     ReverseClimber.whileHeld(new ReverseClimber());
     runIntake.whileHeld(new runIntake());
     runOuttake.whileHeld(new runOuttake());
-    turnToTarget.whileHeld(new turnToTarget());
+    turnToTarget.whenPressed(new turnToTarget());
   };
 }

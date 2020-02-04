@@ -21,13 +21,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-
+import edu.wpi.first.wpilibj.Timer;
 public class turnToTarget extends Command {
     
    
     private PIDController pid;
     private double angle = 0;
-  
+	private Timer timer = new Timer();
+	private double val;
     
       
     
@@ -35,9 +36,9 @@ public class turnToTarget extends Command {
     public turnToTarget() {
         requires(Robot.m_limelight);
         requires(Robot.m_drivetrain);
-        pid = new PIDController(5e-3,1e-6, 0);
+        pid = new PIDController(5e-2,1e-6, 0);
         pid.setSetpoint(angle);
-        pid.setTolerance(0.1f);
+        pid.setTolerance(-1f);
         
 	}
 
@@ -45,7 +46,9 @@ public class turnToTarget extends Command {
 	protected void initialize() {
 
 		//Robot.m_feeder.feederMotor.set(0);
-         Robot.m_limelight.printTelemetry();
+		 Robot.m_limelight.printTelemetry();
+		 timer.reset();
+		 timer.start();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -54,28 +57,37 @@ public class turnToTarget extends Command {
         SmartDashboard.putNumber("limelight", Robot.m_limelight.getX());
         
         //sets value of pid.calculate so that we use this later for drive arcade (feeds it value)
-        double val = pid.calculate(Robot.m_limelight.getX(), 0);
+         val = pid.calculate(Robot.m_limelight.getX(), 0);
         //checks this number in smartdashboard
         SmartDashboard.putNumber("val", pid.calculate(Robot.m_limelight.getX(), 0));
         //makes it turn towards the target
-        Robot.m_drivetrain.arcadeDrive(0.0, pid.calculate(Robot.m_limelight.getX(), 0));
-        Robot.m_limelight.printTelemetry();
+        Robot.m_drivetrain.arcadeDrive(0.0, -pid.calculate(Robot.m_limelight.getX(), 0));
+		Robot.m_limelight.printTelemetry();
+		if (Math.abs(Robot.m_drivetrain.leftMotorA.getEncoder().getVelocity())> 30 && Math.abs(Robot.m_drivetrain.rightMotorA.getEncoder().getVelocity()) > 30) 
+			timer.reset();
+		
+		
+		//SmartDashboard.putBoolean()
     }
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return false;
+		
+		return (timer.get() > .7);
 	}
 
 	// Called once after isFinished returns true
 	protected void end() {
 		//Robot.m_feeder.feederMotor.set(0);
-
+		Robot.m_drivetrain.resetDrivetrain();
 	}
+
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
 		//Robot.m_feeder.feederMotor.set(0);
+				Robot.m_drivetrain.resetDrivetrain();
+
 	}
 }
