@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - CreateNewPath",
+            "request": "launch",
+            "mainClass": "CreateNewPath"
+        }
+    ]
+}
