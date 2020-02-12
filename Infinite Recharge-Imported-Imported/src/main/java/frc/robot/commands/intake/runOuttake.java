@@ -10,8 +10,8 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 /**
  *
  */
-public class runOuttake extends Command {
-	public runOuttake() {
+public class RunOuttake extends Command {
+	public RunOuttake() {
 		requires(Robot.m_intake);
 	}
 

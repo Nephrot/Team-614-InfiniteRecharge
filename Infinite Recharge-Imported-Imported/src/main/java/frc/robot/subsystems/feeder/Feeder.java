@@ -12,7 +12,7 @@ import com.revrobotics.ControlType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Feeder extends Subsystem {
-       public CANSparkMax feederMotor= new CANSparkMax(RobotMap.feederMotorPort, MotorType.kBrushed);
+       public CANSparkMax feederMotor= new CANSparkMax(RobotMap.feederMotorPort, MotorType.kBrushless);
        private CANPIDController pidController;
        private CANEncoder encoder;
     

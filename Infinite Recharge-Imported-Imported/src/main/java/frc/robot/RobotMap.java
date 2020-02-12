@@ -29,7 +29,7 @@ public class RobotMap {
 
   //Chassis
   public static final int leftMotorAPort = 1;
-  public static final int leftMotorBPort = 3;
+  public static final int leftMotorBPort = 8;
   public static final int rightMotorAPort = 2;
   public static final int rightMotorBPort = 4;
   public static final MotorType brushless = MotorType.kBrushless;
@@ -58,8 +58,6 @@ public class RobotMap {
   public static final double kD = 0;
   public static final double kF = 0;
 
-
-
   //Climber 
   public static final int climberMotorPort = 13;
   public static final int climberMotorPortTwo = 15;
@@ -78,7 +76,7 @@ public class RobotMap {
 	public static final int compressor = 0;
 
   //Misc
-  public static final int feederMotorPort = 8;
+  public static final int feederMotorPort = 5;
   public static final int intakeMotorPort = 2;
 
   //Controller.

@@ -22,6 +22,7 @@ import frc.robot.commands.shooter.SetSpeed;
 import frc.robot.commands.shooter.SetSpeedButton;
 import frc.robot.commands.chassis.RotateToAngle;
 import frc.robot.commands.climber.RunClimber;
+import frc.robot.commands.feeder.RunFeeder;
 import frc.robot.commands.intake.runIntake;
 import frc.robot.commands.limelight.*;
 import frc.robot.commands.climber.ReverseClimber;
@@ -117,10 +118,6 @@ public class OI {
   public OI() {
     // followPath.whenPressed(new LeftPath());
     //coastMode.whileHeld(new SetSpeed(0.5));
-    RunClimber.whileHeld(new RunClimber());
-    ReverseClimber.whileHeld(new ReverseClimber());
-    runIntake.whileHeld(new runIntake());
-    runOuttake.whileHeld(new runOuttake());
-    turnToTarget.whenPressed(new turnToTarget());
+    RunClimber.whileHeld(new RunFeeder());
   };
 }

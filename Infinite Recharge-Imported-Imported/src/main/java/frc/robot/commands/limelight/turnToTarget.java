@@ -22,7 +22,7 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.Timer;
-public class turnToTarget extends Command {
+public class TurnToTarget extends Command {
     
    
     private PIDController pid;
@@ -33,7 +33,7 @@ public class turnToTarget extends Command {
       
     
     
-    public turnToTarget() {
+    public TurnToTarget() {
         requires(Robot.m_limelight);
         requires(Robot.m_drivetrain);
         pid = new PIDController(5e-2,1e-6, 0);

@@ -47,6 +47,7 @@ public class Robot extends TimedRobot {
   public static Vision m_limelight;
   public static Feeder m_feeder;
   public static OI m_oi;
+  
 
   public static Intake m_intake = new Intake();
   public static Climber m_climber = new Climber();
@@ -201,6 +202,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Distance Covered (Right Wheels) (In Feet)", Robot.m_drivetrain.distanceInFeet(Robot.m_drivetrain.rightMotorA.getEncoder().getPosition()));
     SmartDashboard.putNumber("Distance Covered (Left Wheels) (In Feet)", Robot.m_drivetrain.distanceInFeet(Robot.m_drivetrain.leftMotorA.getEncoder().getPosition()));
     
+    SmartDashboard.putNumber("Feeder Speed", 0);
     SmartDashboard.putNumber("Output (Left Wheels)", 0);
     SmartDashboard.putNumber("Output (Right Wheels)", 0);
     SmartDashboard.putNumber("Heading ", 0);
