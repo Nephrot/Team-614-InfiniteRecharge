@@ -1,75 +1,44 @@
-package frc.robot.subsystems;
-
-import edu.wpi.first.wpilibj.DriverStation;
+package frc.robot.commands.intake;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.OI;
 import frc.robot.Robot;
-
-
-
+import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 
 /**
-
  *
-
  */
 
-public class CompressorControl extends Command {
-
-
-
-	public CompressorControl() {
-		// Use requires() here to declare subsystem dependencies
-		requires(Robot.pneumatics);
+public class IntakeOnSmartDashboard extends Command {
+	public IntakeOnSmartDashboard() {
+		requires(Robot.m_intake);
 	}
-
-
 
 	// Called just before this Command runs the first time
-
 	protected void initialize() {
-		Robot.pneumatics.compressor.start();
-
+		Robot.m_intake.intakeMotor.set(0);		
 	}
-
-
 
 	// Called repeatedly when this Command is scheduled to run
-
 	protected void execute() {
-
-		Robot.pneumatics.compressor.start();
-
-
+	    Robot.m_intake.intakeMotor.set(SmartDashboard.getNumber("Intake Speed", 0.0));
 	}
-
-
 
 	// Make this return true when this Command no longer needs to run execute()
-
 	protected boolean isFinished() {
-
 		return false;
-
 	}
-
-
 
 	// Called once after isFinished returns true
-
 	protected void end() {
-		Robot.pneumatics.compressor.start();
+		Robot.m_intake.intakeMotor.set(0);
 	}
-
-
 
 	// Called when another command which requires one or more of the same
-
 	// subsystems is scheduled to run
-
 	protected void interrupted() {
-		Robot.pneumatics.compressor.stop();
-	}
-
+		Robot.m_intake.intakeMotor.set(0);
+    }
 }

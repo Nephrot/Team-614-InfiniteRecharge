@@ -8,8 +8,8 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 
-public class RunSerializer extends Command {
-	public RunSerializer() {
+public class RunSerializerBasic extends Command {
+	public RunSerializerBasic() {
 		requires(Robot.m_serializer);
 	}
 

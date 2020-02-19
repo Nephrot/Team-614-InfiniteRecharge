@@ -13,8 +13,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import frc.robot.subsystems.serializer.Serializer;
-import com.playingwithfusion.*;
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.intake.IntakeOnJoystick;
 
 public class Intake extends Subsystem {
    // Put methods for controlling this subsystem
@@ -25,20 +25,20 @@ public class Intake extends Subsystem {
    public DoubleSolenoid intakeSolenoidA;
    public DoubleSolenoid intakeSolenoidB;
 
-   DoubleSolenoid.Value valueSolenoid1 = DoubleSolenoid.Value.kReverse;
-   DoubleSolenoid.Value valueSolenoid2 = DoubleSolenoid.Value.kForward;
+   public DoubleSolenoid.Value pistonIn = DoubleSolenoid.Value.kReverse;
+   public DoubleSolenoid.Value pistonOut = DoubleSolenoid.Value.kForward;
 
    public Intake() {
       intakeMotor = new CANSparkMax(RobotMap.intakeMotorPort, MotorType.kBrushed);
       intakeSolenoidA = new DoubleSolenoid(RobotMap.doubleSolenoidAPort1, RobotMap.doubleSolenoidAPort2);
       intakeSolenoidB = new DoubleSolenoid(RobotMap.doubleSolenoidBPort1, RobotMap.doubleSolenoidBPort2);
+      SmartDashboard.putNumber("Intake: Intake Speed", 0.0);
    }
 
    @Override
    public void initDefaultCommand() {
       // Set the default command for a subsystem here.
-      // setDefaultCommand(new MySpecialCommand());
-      // setDefaultCommand(new SetSpeed());
+      setDefaultCommand(new IntakeOnJoystick());
    }
 
    public DoubleSolenoid.Value getDoubleSolenoidA() {
@@ -58,38 +58,22 @@ public class Intake extends Subsystem {
    }
 
    public DoubleSolenoid.Value getOppositeState(DoubleSolenoid.Value solenoid) {
-      if (solenoid.equals(valueSolenoid1)) {
-         return valueSolenoid2;
+      if (solenoid.equals(pistonIn)) {
+         return pistonOut;
       } else {
-         return valueSolenoid1;
+         return pistonIn;
       }
    }
 
    public void toggleDoubleSolenoidA() {
-      // intakeSolenoidA = getOppositeState(getDoubleSolenoidA());
-      //setDoubleSolenoidA(getOppositeState(getDoubleSolenoidA()));
-      setDoubleSolenoidA(DoubleSolenoid.Value.kForward);
+      setDoubleSolenoidA(getOppositeState(getDoubleSolenoidA()));
    }
 
    public void toggleDoubleSolenoidB() {
-      // setDoubleSolenoidB(DoubleSolenoid.Value.kForward);
-    
-     setDoubleSolenoidB(DoubleSolenoid.Value.kForward);
+      setDoubleSolenoidB(getOppositeState(getDoubleSolenoidB()));
    }
 
-   public void untoggleDoubleSolenoidA() {
-      setDoubleSolenoidA(DoubleSolenoid.Value.kForward);
-   }
-
-
-   public void untoggleDoubleSolenoidB() {
-      setDoubleSolenoidB(DoubleSolenoid.Value.kReverse);
-    
-     setDoubleSolenoidB(DoubleSolenoid.Value.kForward);
-   }
-
-
-   public void intakeMotorSpeed(double speed) {
+   public void intakemotorPortSpeed(double speed) {
       intakeMotor.set(speed);
    }
 

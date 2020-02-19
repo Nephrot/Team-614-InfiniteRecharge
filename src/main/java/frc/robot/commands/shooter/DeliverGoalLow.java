@@ -35,15 +35,15 @@ public class DeliverGoalLow extends Command {
 	// Called once after isFinished returns true
 	protected void end() {
 		Robot.m_shooter.shooterMotor.set(0);
-		Robot.m_intake.untoggleDoubleSolenoidA();
-		Robot.m_intake.untoggleDoubleSolenoidB();
+		Robot.m_intake.toggleDoubleSolenoidA();
+		Robot.m_intake.toggleDoubleSolenoidB();
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
 		Robot.m_shooter.shooterMotor.set(0);
-		Robot.m_intake.untoggleDoubleSolenoidA();
-		Robot.m_intake.untoggleDoubleSolenoidB();
+		Robot.m_intake.toggleDoubleSolenoidA();
+		Robot.m_intake.toggleDoubleSolenoidB();
 	}
 }

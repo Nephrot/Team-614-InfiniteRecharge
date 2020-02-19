@@ -10,35 +10,43 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 /**
  *
  */
-public class IntakeToggle extends Command {
-	public IntakeToggle() {
-		requires(Robot.m_intake);
+public class RunIntakeBasic extends Command {
+    double speed;
+	public RunIntakeBasic(double speed) {
+        requires(Robot.m_intake);
+        this.speed = speed;
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		// Robot.arm.sparkMaxB.setInverted(true);
-        Robot.m_intake.toggleDoubleSolenoidA();
-        Robot.m_intake.toggleDoubleSolenoidB();
+        Robot.m_intake.intakeMotor.set(0);
+        Robot.m_intake.setDoubleSolenoidA(Robot.m_intake.pistonOut);
+        Robot.m_intake.setDoubleSolenoidB(Robot.m_intake.pistonOut);
 	}
-
 
 	// Called repeatedly when this Command is scheduled to run
-	protected void execute(double speed) {
+	protected void execute() {
+		Robot.m_intake.intakeMotor.set(speed);
 	}
 
-	// Make this return true when this Command no longer needs to run execute()
+	// Make this return true when this Command no lo
 	protected boolean isFinished() {
-		return true;
+		return false;
 	}
-    
+
 	// Called once after isFinished returns true
 	protected void end() {
+		Robot.m_intake.intakeMotor.set(0);
+		Robot.m_intake.setDoubleSolenoidA(Robot.m_intake.pistonIn);
+        Robot.m_intake.setDoubleSolenoidB(Robot.m_intake.pistonIn);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
+		Robot.m_intake.intakeMotor.set(0);
+		Robot.m_intake.setDoubleSolenoidA(Robot.m_intake.pistonIn);
+        Robot.m_intake.setDoubleSolenoidB(Robot.m_intake.pistonIn);
     }
     
     // protected void pistonToggle() {

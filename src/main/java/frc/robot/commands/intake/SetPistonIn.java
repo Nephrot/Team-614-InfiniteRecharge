@@ -6,43 +6,46 @@ import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+
 
 /**
  *
  */
-public class RevIntake extends Command {
-	public RevIntake() {
-		requires(Robot.intake);
+public class SetPistonIn extends Command {
+	public SetPistonIn() {
+		requires(Robot.m_intake);
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		// Robot.arm.sparkMaxB.setInverted(true);
-		Robot.intake.sparkMaxE.set(0);
+		Robot.m_intake.setDoubleSolenoidA(Robot.m_intake.pistonIn);
+        Robot.m_intake.setDoubleSolenoidB(Robot.m_intake.pistonIn);
 	}
 
+
 	// Called repeatedly when this Command is scheduled to run
-	protected void execute() {
-	//  SmartDashboard.putNumber("Left Trigger",OI.operatorController.getTriggerAxis(Hand.kLeft));
-	//  SmartDashboard.putNumber("Right Trigger",OI.operatorController.getTriggerAxis(Hand.kRight));
-	 Robot.intake.sparkMaxE.set(SmartDashboard.getNumber("Intake Speed", 0));
+	protected void execute(double speed) {
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
-
+    
 	// Called once after isFinished returns true
 	protected void end() {
-		Robot.intake.sparkMaxE.set(0);
-		Robot.arm.hawkTalonA.setSelectedSensorPosition(0);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
-		Robot.intake.sparkMaxE.set(0);
-		Robot.arm.hawkTalonA.setSelectedSensorPosition(0);
-	}
+    }
+    
+    // protected void pistonToggle() {
+    //     Robot.m_intake.toggleDoubleSolenoidA();
+    //     Robot.m_intake.toggleDoubleSolenoidB();
+    // }
 }

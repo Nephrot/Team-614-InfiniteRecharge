@@ -19,17 +19,17 @@ public class Serializer extends Subsystem {
     // setDefaultCommand(new VisionProcessing());
   }
 
-  public void setSerializerSpeedA(double speed) {
+  public void setSerializerA(double speed) {
     serializerMotorA.set(speed);
   }
 
-  public void setSerializerSpeedB(double speed) {
+  public void setSerializerB(double speed) {
     serializerMotorB.set(speed);
   }
 
-  public void togetherSerializerSpeeds(double speed) {
-    setSerializerSpeedA(speed);
-    setSerializerSpeedB(speed < 0 ? -Math.abs(speed - .2) : Math.abs(speed - .2));
+  public void runSerializer(double speed) {
+    setSerializerA(speed);
+    setSerializerB(speed < 0 ? -Math.abs(speed - .2) : Math.abs(speed - .2));
   }
 
   public double getCurrentA() {
@@ -47,23 +47,22 @@ public class Serializer extends Subsystem {
   public boolean checkCurrentB(double current) {
     return serializerMotorB.getOutputCurrent() > current ? true : false;
   }
-  // if current above certain amount, do equations instead
 
   public void runMotorFunction(double speed) {
        if(!checkCurrentA(RobotMap.setCurrent) && !checkCurrentB(RobotMap.setCurrent))
        {
-        setSerializerSpeedA(speed);
-        setSerializerSpeedB(speed < 0 ? -Math.abs(speed - .2) : Math.abs(speed - .2));
+        setSerializerA(speed);
+        setSerializerB(speed < 0 ? -Math.abs(speed - .2) : Math.abs(speed - .2));
        }
        else if(checkCurrentA(RobotMap.setCurrent))
        {
-         setSerializerSpeedA(-speed);
-         setSerializerSpeedB(speed < 0 ? -Math.abs(speed - .2) : Math.abs(speed - .2));
+         setSerializerA(-speed);
+         setSerializerB(speed < 0 ? -Math.abs(speed - .2) : Math.abs(speed - .2));
        }
        else
        {
-         setSerializerSpeedB(speed);
-         setSerializerSpeedA(speed < 0 ? Math.abs(speed - .2) : -Math.abs(speed - .2));
+         setSerializerB(speed);
+         setSerializerA(speed < 0 ? Math.abs(speed - .2) : -Math.abs(speed - .2));
        }
   }
 }

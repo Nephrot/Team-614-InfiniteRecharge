@@ -15,7 +15,7 @@ import com.playingwithfusion.TimeOfFlight;
 
 public class Shooter extends Subsystem {
   public CANSparkMax shooterMotor;
-  public TimeOfFlight tofsensor;
+  public TimeOfFlight tofSensorShooter;
 
   public CANSparkMax acceleratorMotor;
   private CANPIDController shooterPIDController;
@@ -26,7 +26,7 @@ public class Shooter extends Subsystem {
     acceleratorMotor = new CANSparkMax(RobotMap.acceleratorMotorPort, MotorType.kBrushless);
     followShooter();
 
-    tofsensor = new TimeOfFlight(1);
+    tofSensorShooter = new TimeOfFlight(1);
     shooterPIDController = shooterMotor.getPIDController();
     encoder = shooterMotor.getEncoder();
 
@@ -59,16 +59,16 @@ public class Shooter extends Subsystem {
   }
 
   public void updateTelemetry() {
-    if(shooterPIDController.getP() != SmartDashboard.getString("Shooter: P Value", RobotMap.shooterPValue)) {
-      shoooterPIDController.setP(SmartDashboard.getString("Shooter: P Value", RobotMap.shooterPValue));
-    } else if (shooterPIDController.getI() != SmartDashboard.getString("Shooter: I Value", RobotMap.shooterIValue)) {
-      shoooterPIDController.setI(SmartDashboard.getString("Shooter: I Value", RobotMap.shooterIValue));
-    } else if (shooterPIDController.getD() != SmartDashboard.getString("Shooter: D Value", RobotMap.shooterDValue)) {
-      shoooterPIDController.setD(SmartDashboard.getString("Shooter: D Value", RobotMap.shooterDValue));
-    } else if (shooterPIDController.getFF() != SmartDashboard.getString("Shooter: FF Value", RobotMap.shooterFFValue)) {
-      shoooterPIDController.setFF(SmartDashboard.getString("Shooter: FF Value", RobotMap.shooterFFValue));
-    } else if (shooterPIDController.getIZ() != SmartDashboard.getString("Shooter: IZ Value", RobotMap.shooterIZValue)) {
-      shoooterPIDController.setIZ(SmartDashboard.getString("Shooter: IZ Value", RobotMap.shooterIZValue));
+    if(shooterPIDController.getP() != SmartDashboard.getNumber("Shooter: P Value", RobotMap.shooterPValue)) {
+      shooterPIDController.setP(SmartDashboard.getNumber("Shooter: P Value", RobotMap.shooterPValue));
+    } else if (shooterPIDController.getI() != SmartDashboard.getNumber("Shooter: I Value", RobotMap.shooterIValue)) {
+      shooterPIDController.setI(SmartDashboard.getNumber("Shooter: I Value", RobotMap.shooterIValue));
+    } else if (shooterPIDController.getD() != SmartDashboard.getNumber("Shooter: D Value", RobotMap.shooterDValue)) {
+      shooterPIDController.setD(SmartDashboard.getNumber("Shooter: D Value", RobotMap.shooterDValue));
+    } else if (shooterPIDController.getFF() != SmartDashboard.getNumber("Shooter: FF Value", RobotMap.shooterFFValue)) {
+      shooterPIDController.setFF(SmartDashboard.getNumber("Shooter: FF Value", RobotMap.shooterFFValue));
+    } else if (shooterPIDController.getIZone() != SmartDashboard.getNumber("Shooter: IZ Value", RobotMap.shooterIZValue)) {
+      shooterPIDController.setIZone(SmartDashboard.getNumber("Shooter: IZ Value", RobotMap.shooterIZValue));
     }
   }
 
