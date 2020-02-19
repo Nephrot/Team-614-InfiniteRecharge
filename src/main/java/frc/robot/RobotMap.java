@@ -50,6 +50,15 @@ public class RobotMap {
   public static final double chassisVelocityIZValue = 2;
   public static final double chassisVelocityMinOutput = 2;
   public static final double chassisVelocityMaxOutput = 2;
+  public static final double chassisSmartMotionPValue = 0;
+  public static final double chassisSmartMotionIValue = 0;
+  public static final double chassisSmartMotionDValue = 0;
+  public static final double chassisSmartMotionFFValue = 0;
+  public static final double chassisMaxAccel = 0;
+  public static final double chassisSmartMotionPort = 0;
+  public static final double chassisMaxVel = 0;
+  public static final double chassisMinVel = 0;
+  public static final double chassisAllowedErr = 0;
   public static double vValue = 0.08;
   public static final double hValue = -0.01;
 
@@ -109,7 +118,6 @@ public class RobotMap {
 	public static final int compressor = 0;
 
   //Misc
- 
 
   //Controller.
   public static final int AButton = 1;

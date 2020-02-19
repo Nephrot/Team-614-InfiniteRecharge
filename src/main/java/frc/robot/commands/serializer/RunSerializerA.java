@@ -26,7 +26,7 @@ public class RunSerializerA extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         // change to actual value after testing
-        Robot.m_serializer.runSerializerA(speed);
+        Robot.m_serializer.setSerializerA(speed);
     //   Robot.m_feeder.set(0.7);
     }
  
@@ -37,13 +37,13 @@ public class RunSerializerA extends Command {
  
     // Called once after isFinished returns true
     protected void end() {
-        Robot.m_serializer.runSerializerA(0);
+        Robot.m_serializer.setSerializerA(0);
  
     }
  
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-        Robot.m_serializer.runSerializerA(0);
+        Robot.m_serializer.setSerializerA(0);
     }
 }

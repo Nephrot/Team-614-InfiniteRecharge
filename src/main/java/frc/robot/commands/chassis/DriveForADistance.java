@@ -9,11 +9,11 @@ import frc.robot.RobotMap;
 import frc.robot.subsystems.vision.Vision;
 import frc.robot.subsystems.chassis.Drivetrain;
 
-public class DriveToTarget extends Command {
+public class DriveForADistance extends Command {
 	private int pipeline;
 	private int camMode;
 
-	public DriveToTarget(int pipeline, int camMode) {
+	public DriveForADistance(int pipeline, int camMode) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.m_drivetrain);

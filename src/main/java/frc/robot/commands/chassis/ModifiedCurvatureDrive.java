@@ -5,10 +5,8 @@ import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class VelocityDrive extends Command {
-    //Is this error free?
-    //yes
-	public VelocityDrive() {
+public class ModifiedCurvatureDrive extends Command {
+	public ModifiedCurvatureDrive() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.m_drivetrain);
@@ -20,7 +18,8 @@ public class VelocityDrive extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.m_drivetrain.velocityBasedDrive(Robot.m_oi.driverController);
+		//Robot.m_drivetrain.curvatureDrive(OI.driverController.getY(Hand.kLeft), -OI.driverController.getX(Hand.kRight));
+		Robot.m_drivetrain.curvatureDrive(OI.driverController.getY(Hand.kLeft) < 0 ? .8 * -Math.sqrt(OI.driverController.getY(Hand.kLeft)) : .8 * Math.sqrt(OI.driverController.getY(Hand.kLeft)), (OI.driverController.getY(Hand.kLeft) < 0 ? .8 * -Math.sqrt(OI.driverController.getY(Hand.kLeft)) : .8 * Math.sqrt(OI.driverController.getY(Hand.kLeft))));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

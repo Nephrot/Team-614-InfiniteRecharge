@@ -113,6 +113,7 @@ public class Feeder extends Subsystem {
                 setFeederSpeed(0.5);
             } else {
                 senseBallFeeder = false;
+                Robot.m_feeder.feederMotor.set(0);		
             }
             if (distanceFeeder < 200 && counter >= 0 && !senseBallFeeder) {
                 if (!senseBallShooter)
@@ -121,6 +122,22 @@ public class Feeder extends Subsystem {
             } else {
                 senseBallShooter = false;
             }
+
+            // if(counter == 0)
+            // {
+            //     rainbow();
+            // }
+    }
+
+    public void changeLED() {
+        for(int i = 0; i < (int)(60 * counter/3); i++)
+        {
+            feederLEDBuffer.setHSV(i, 60, 255, 255);
+        }
+        for(int i = (int)(60 * counter/3); i < feederLEDBuffer.getLength(); i++)
+        {
+            feederLEDBuffer.setRGB(i, 0, 0, 0);
+        }
     }
 
     public void onLED() {

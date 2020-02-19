@@ -207,6 +207,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Output (Right Wheels)", 0);
     SmartDashboard.putNumber("Heading ", 0);
     SmartDashboard.putNumber("Angle ", Robot.m_navX.getAngle());
+    SmartDashboard.putNumber("Serializer Speed", 0);
+    
 
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
