@@ -5,6 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+//poopy butt face
 package frc.robot;
 import com.fasterxml.jackson.databind.deser.impl.SetterlessProperty;
 
@@ -19,17 +20,23 @@ import frc.robot.commands.shooter.DeliverGoalLow;
 import frc.robot.commands.shooter.ShootForATime;
 import frc.robot.commands.misc.BlinkForATime;
 import frc.robot.commands.shooter.SetSpeed;
-import frc.robot.commands.shooter.SetSpeedButton;
 import frc.robot.commands.chassis.RotateToAngle;
-import frc.robot.commands.climber.RunClimber;
 import frc.robot.commands.intake.RunIntakeBasic;
 import frc.robot.commands.intake.SetPistonIn;
 import frc.robot.commands.intake.SetPistonOut;
 import frc.robot.commands.limelight.*;
-import frc.robot.commands.climber.ReverseClimber;
 import frc.robot.commands.intake.IntakeToggle;
 import frc.robot.commands.intake.IntakeSetValue;
 import frc.robot.commands.intake.IntakeOnSmartDashboard;
+import frc.robot.commands.serializer.RunSerializerA;
+import frc.robot.commands.serializer.RunSerializerB;
+import frc.robot.commands.serializer.RunSerializerAdvanced;
+import frc.robot.commands.serializer.RunSerializerBasic;
+import frc.robot.commands.serializer.SerializerAutomated;
+import frc.robot.commands.serializer.SerializerOnSmartDashboard;
+import frc.robot.commands.climber.BrakePistonIn;
+import frc.robot.commands.climber.BrakePistonOut;
+import frc.robot.commands.feeder.*;
 //import frc.robot.commands.intake.runOuttake;
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -85,9 +92,26 @@ public class OI {
 
   public static final XboxController driverController = new XboxController(0);
   
-  //intake controller
+  //Intake controller
   public static final XboxController intakeController = new XboxController(1);
 
+  //Serializer controller
+  public static final XboxController serializerController = new XboxController(2);
+
+  //Climber controller
+  public static final XboxController climberController = new XboxController(3);
+  
+  //Feeder controller
+  public static final XboxController feederController = new XboxController(4);
+
+  //Driver Controller 
+  public static final Button RunSerializerBasic = new JoystickButton(driverController, RobotMap.LeftBumper);
+  public static final Button RunFeederBasic = new JoystickButton(driverController, RobotMap.BButton);
+  public static final Button RunFeederBasicBackwards = new JoystickButton(driverController, RobotMap.XButton);
+  public static final Button RunShooterBasic = new JoystickButton(driverController, RobotMap.AButton);
+  public static final Button RunShooterBasicBackwards = new JoystickButton(driverController, RobotMap.YButton);
+  public static final Button RunIntakeBasic = new JoystickButton(driverController, RobotMap.RightBumper);
+  
   //intake button 
   public static final Button setPistonInButton = new JoystickButton(intakeController, RobotMap.AButton);
   public static final Button setPistonOutButton = new JoystickButton(intakeController, RobotMap.BButton);
@@ -96,11 +120,36 @@ public class OI {
   public static final Button intakeSetValueButton = new JoystickButton(intakeController, RobotMap.LeftBumper);
   public static final Button intakeOnSmartDashboardButton = new JoystickButton(intakeController, RobotMap.RightBumper);
 
+  //Serializer Buttons
+  public static final Button RunSerializerAButton  = new JoystickButton(serializerController, RobotMap.AButton);
+  public static final Button RunSerializerBButton = new JoystickButton(serializerController, RobotMap.BButton);
+  public static final Button RunSerializerAdvancedButton = new JoystickButton(serializerController, RobotMap.XButton);
+  public static final Button RunSerializerBasicButton = new JoystickButton(serializerController, RobotMap.YButton);
+  public static final Button SerializerAutomatedButton = new JoystickButton(serializerController, RobotMap.LeftBumper);
+  public static final Button SerializerOnSmartDashboardButton = new JoystickButton(serializerController, RobotMap.RightBumper);
 
-  // public static final Button followPath = new JoystickButton(driverController, RobotMap.YButton);
-  public static final Button coastMode = new JoystickButton(driverController, RobotMap.RightBumper);
+  //Climber Buttons 
+  public static final Button BrakeInButton = new JoystickButton(climberController, RobotMap.AButton);
+  public static final Button BrakeOutButton = new JoystickButton(climberController, RobotMap.BButton);
+
+  //Feeder Buttons
+  public static final Button FeederAutomatedButton = new JoystickButton(feederController, RobotMap.AButton);
+  public static final Button FeederOnJoystickButton = new JoystickButton(feederController, RobotMap.BButton);
+  public static final Button FeederOnSmartDashboardButton = new JoystickButton(feederController, RobotMap.XButton);
+  public static final Button FeederSetValueButton = new JoystickButton(feederController, RobotMap.YButton);
+  public static final Button RunFeederButton = new JoystickButton(feederController, RobotMap.LeftBumper);
+  public static final Button RunFeederJoystickButton = new JoystickButton(feederController, RobotMap.RightBumper);
 
   public OI() {
+    
+    //DriverController 
+    RunFeederBasic.whileHeld(new FeederSetValue(0.8));
+    RunFeederBasicBackwards.whileHeld(new FeederSetValue(-0.8));
+    RunShooterBasic.whileHeld(new FeederSetValue(0.8));
+    RunShooterBasicBackwards.whileHeld(new FeederSetValue(-0.8));
+    RunIntakeBasic.whileHeld(new RunIntakeBasic(0.8));
+    RunSerializerBasic.whileHeld(new RunSerializerBasic(0.8));
+    
     //Intake Commands
     // followPath.whenPressed(new LeftPath());
     setPistonInButton.whenPressed(new SetPistonIn());
@@ -111,6 +160,26 @@ public class OI {
     intakeSetValueButton.whileHeld(new IntakeSetValue(0.5));
     intakeOnSmartDashboardButton.whileHeld(new IntakeOnSmartDashboard());
 
+    //serializer
+    RunSerializerAButton.whileHeld(new RunSerializerA(0.7));
+    RunSerializerBButton.whileHeld(new RunSerializerB(-0.5));
+    RunSerializerAdvancedButton.whileHeld(new RunSerializerAdvanced(0.7));
+    RunSerializerBasicButton.whileHeld(new RunSerializerBasic(0.7));
+    SerializerAutomatedButton.whileHeld(new SerializerAutomated(0.7));
+    SerializerOnSmartDashboardButton.whileHeld(new SerializerOnSmartDashboard());
+
+    //climber
+    BrakeInButton.whenPressed(new BrakePistonIn());
+    BrakeOutButton.whenPressed(new BrakePistonOut());
+
+    //Feeder
+    FeederAutomatedButton.whileHeld(new FeederAutomated());
+    FeederOnJoystickButton.whileHeld(new FeederAutomated());
+    FeederOnSmartDashboardButton.whileHeld(new FeederOnSmartDashboard());
+    FeederSetValueButton.whileHeld(new FeederSetValue(0.5));
+    RunFeederButton.whileHeld(new RunFeeder());
+    RunFeederJoystickButton.whileHeld(new RunFeederJoystick());
+    
     
   }
 }

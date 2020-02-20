@@ -7,51 +7,45 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 
-
 /**
  *
  */
-public class RunClimber extends Command {
-
-	public RunClimber() {
-		requires(Robot.m_climber);
+public class RunClimberUp extends Command {
+    public double setpoint;
+	public RunClimberUp(double setpoint) {
+        requires(Robot.m_climber);
+        this.setpoint = setpoint;
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		// Robot.arm.sparkMaxB.setInverted(true);
         Robot.m_climber.climberMotor.set(0);
-        //Robot.m_climber.climberMotorB.set(0);
 	}
+
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-	//  SmartDashboard.putNumber("Left Trigger",OI.operatorController.getTriggerAxis(Hand.kLeft));
-    //  SmartDashboard.putNumber("Right Trigger",OI.operatorController.getTriggerAxis(Hand.kRight));
-    // If you need to change speed it here
-	//Robot.m_climber.climberMotorA.set(SmartDashboard.getNumber("Intake Speed", 0)); 
-    //Robot.m_climber.climberMotorB.set(SmartDashboard.getNumber("Intake Speed", 0));
-    Robot.m_climber.climberMotor.set(.5);
-    //Robot.m_climber.climberMotorB.set(-.5);
-}
+        Robot.m_climber.runTMP(setpoint);
+	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return false;
+		return Robot.m_climber.checkLimitOne() || Robot.m_climber.checkLimitTwo();
 	}
-
+    
 	// Called once after isFinished returns true
 	protected void end() {
         Robot.m_climber.climberMotor.set(0);
-        //Robot.m_climber.climberMotorB.set(0);
-		//Robot.arm.hawkTalonA.setSelectedSensorPosition(0);
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
         Robot.m_climber.climberMotor.set(0);
-        //Robot.m_climber.climberMotorB.set(0);
-		//Robot.arm.hawkTalonA.setSelectedSensorPosition(0);
-	}
+    }
+    
+    // protected void pistonToggle() {
+    //     Robot.m_intake.toggleDoubleSolenoidA();
+    //     Robot.m_intake.toggleDoubleSolenoidB();
+    // }
 }

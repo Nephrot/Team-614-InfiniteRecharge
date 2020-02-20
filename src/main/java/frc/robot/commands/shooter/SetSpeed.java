@@ -27,8 +27,8 @@ public class SetSpeed extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-	  //  Robot.m_shooter.shooterMotor.set(SmartDashboard.getNumber("Number", 0.0));
 	  Robot.m_shooter.shooterMotor.set(0.5);
+	  
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

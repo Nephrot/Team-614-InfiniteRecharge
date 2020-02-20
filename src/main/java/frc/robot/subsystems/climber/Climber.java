@@ -102,7 +102,7 @@ public class Climber extends Subsystem {
         }
     }
 
-    public void toggleDoubleSolenoidA() {
+    public void toggleBrake() {
         setBrake(getBrakeOppositeState(getBrake()));
     }
   

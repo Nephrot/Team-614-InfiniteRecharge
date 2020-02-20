@@ -5,6 +5,7 @@ import frc.robot.RobotMap;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import frc.robot.commands.serializer.*;
 //import frc.robot.commands.serializer.SerializerAutomated;
 public class Serializer extends Subsystem {
   public CANSparkMax serializerMotorA;
@@ -16,7 +17,7 @@ public class Serializer extends Subsystem {
   }
 
   public void initDefaultCommand() {
-    //setDefaultCommand(new SerializerAutomated(0.8));
+    setDefaultCommand(new SerializerAutomated(0.8));
   }
 
   public void setSerializerA(double speed) {

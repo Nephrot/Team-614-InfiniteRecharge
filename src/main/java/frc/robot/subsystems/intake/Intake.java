@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import frc.robot.subsystems.serializer.Serializer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.intake.IntakeOnJoystick;
+import frc.robot.subsystems.compressorcontrol.*;
 
 public class Intake extends Subsystem {
    // Put methods for controlling this subsystem
@@ -38,7 +39,7 @@ public class Intake extends Subsystem {
    @Override
    public void initDefaultCommand() {
       // Set the default command for a subsystem here.
-      setDefaultCommand(new IntakeOnJoystick());
+      setDefaultCommand(new CompressorControl());
    }
 
    public DoubleSolenoid.Value getDoubleSolenoidA() {

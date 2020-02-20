@@ -17,7 +17,7 @@ import frc.robot.subsystems.vision.Vision;
 import frc.robot.subsystems.shooter.Shooter;
 import frc.robot.subsystems.intake.Intake;
 import frc.robot.subsystems.serializer.*;
-//import frc.robot.subsystems.Pneumatics.*;
+import frc.robot.subsystems.pneumatics.*;
 
 import com.kauailabs.navx.frc.AHRS;
 
@@ -40,7 +40,7 @@ import frc.robot.subsystems.climber.Climber;
 public class Robot extends TimedRobot {
 
   public static AHRS m_navX;
-  //public static Pneumatics pneumatics;
+  public static Pneumatics pneumatics;
 
   public static Shooter m_shooter;
   public static Drivetrain m_drivetrain;

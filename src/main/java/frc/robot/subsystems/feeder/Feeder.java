@@ -18,6 +18,7 @@ import frc.robot.subsystems.shooter.*;
 import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import com.revrobotics.CANEncoder;
+import frc.robot.commands.feeder.*;
 
 public class Feeder extends Subsystem {
     public CANSparkMax feederMotor;
@@ -64,7 +65,7 @@ public class Feeder extends Subsystem {
 
     @Override
     public void initDefaultCommand() {
-
+        setDefaultCommand(new FeederAutomated());
     }
 
     public void createTelemetryFeeder() {

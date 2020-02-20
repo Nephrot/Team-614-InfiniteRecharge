@@ -32,10 +32,10 @@ public class RobotMap {
   //public static final XboxController intakeController;
 
   //Chassis
-  public static final int leftMotorAPort = 1;
-  public static final int leftMotorBPort = 2;
-  public static final int rightMotorAPort = 3;
-  public static final int rightMotorBPort = 4;
+  public static final int leftMotorAPort = 9; //previously 1
+  public static final int leftMotorBPort = 10; //previously 2
+  public static final int rightMotorAPort = 11; //previously 3
+  public static final int rightMotorBPort = 12; //next 12, previously 4
   public static final MotorType brushless = MotorType.kBrushless;
   public static final MotorType brushed = MotorType.kBrushed;
   public static final double ticksInARevolution = 10.659;
@@ -72,7 +72,7 @@ public class RobotMap {
   public static final double minOutput = -0.8;
   public static final double maxRPM = 5700;
   public static final int shooterMotorPort = 6;
-  public static final int acceleratorMotorPort = 5;
+  public static final int acceleratorMotorPort = 7; //5 previous
   public static double lowGoalSpeed = 1300;
   public static double highGoalSpeed = 2000;
 
@@ -98,7 +98,7 @@ public class RobotMap {
   public static final int climberPistonPortB = 0;
   
   //Intake
-  public static final int intakeMotorPort = 8;
+  public static final int intakeMotorPort = 3; //3 next? previously 8
   public static final int doubleSolenoidAPort1 = 1;
   public static final int doubleSolenoidAPort2 = 2;
   public static final int doubleSolenoidBPort1 = 3;
@@ -117,8 +117,6 @@ public class RobotMap {
   //pneumatics
 	public static final int compressor = 0;
 
-  //Misc
-
   //Controller.
   public static final int AButton = 1;
 	public static final int BButton = 2;
@@ -134,12 +132,12 @@ public class RobotMap {
   public static final int operatorPort = 2;
 
   //Serializer
-  public static final int serializerMotorPortA = 9;
-  public static final int serializerMotorPortB = 10;
+  public static final int serializerMotorPortA = 4; //previously 9
+  public static final int serializerMotorPortB = 5; //10 previously
   public static final int setCurrent = 30;
 
   //Feeder
-  public static final int feederMotorPort = 1;
+  public static final int feederMotorPort = 8; //1 previously
   public static final double feederPValue = 5e-5;
   public static final double feederIValue = 0;
   public static final double feederDValue = 0;

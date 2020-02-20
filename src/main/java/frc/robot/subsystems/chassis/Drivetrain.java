@@ -19,6 +19,8 @@ import com.revrobotics.CANEncoder;
 import edu.wpi.first.wpilibj.XboxController;
 import com.revrobotics.ControlType;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import frc.robot.commands.chassis.VelocityDrive;
+
 
 public class Drivetrain extends Subsystem {
 
@@ -95,7 +97,7 @@ public class Drivetrain extends Subsystem {
     }
 
     public void initDefaultCommand() {
-        // setDefaultCommand(new ArcadeDrive());
+        setDefaultCommand(new VelocityDrive());
     }
 
     public void resetPath() {
