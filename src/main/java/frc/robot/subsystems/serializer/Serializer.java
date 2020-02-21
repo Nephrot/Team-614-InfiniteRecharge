@@ -17,7 +17,7 @@ public class Serializer extends Subsystem {
   }
 
   public void initDefaultCommand() {
-    setDefaultCommand(new SerializerAutomated(0.8));
+    // setDefaultCommand(new SerializerAutomated(0.8));
   }
 
   public void setSerializerA(double speed) {

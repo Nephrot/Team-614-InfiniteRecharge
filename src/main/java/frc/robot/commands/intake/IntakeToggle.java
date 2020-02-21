@@ -19,7 +19,7 @@ public class IntakeToggle extends Command {
 	protected void initialize() {
 		// Robot.arm.sparkMaxB.setInverted(true);
         Robot.m_intake.toggleDoubleSolenoidA();
-        Robot.m_intake.toggleDoubleSolenoidB();
+        // Robot.m_intake.toggleDoubleSolenoidB();
 	}
 
 

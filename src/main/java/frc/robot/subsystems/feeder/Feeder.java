@@ -41,6 +41,7 @@ public class Feeder extends Subsystem {
 
     public Feeder() {
         feederMotor = new CANSparkMax(RobotMap.feederMotorPort, MotorType.kBrushless);
+        feederPIDController = feederMotor.getPIDController();
         tofSensorFeeder = new TimeOfFlight(0); // inside the robot
         Robot.m_shooter.tofSensorShooter.getRange(); // outside the robot
 
@@ -65,7 +66,7 @@ public class Feeder extends Subsystem {
 
     @Override
     public void initDefaultCommand() {
-        setDefaultCommand(new FeederAutomated());
+        // setDefaultCommand(new FeederAutomated());
     }
 
     public void createTelemetryFeeder() {

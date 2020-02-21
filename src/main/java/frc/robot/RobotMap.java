@@ -43,13 +43,13 @@ public class RobotMap {
   public static final double pValue = 0.028;
   public static final double iValue = 0;
   public static final double dValue = 0;
-  public static final double chassisVelocityPValue = 0;
-  public static final double chassisVelocityIValue = 1;
-  public static final double chassisVelocityDValue = 2;
-  public static final double chassisVelocityFFValue = 2;
-  public static final double chassisVelocityIZValue = 2;
-  public static final double chassisVelocityMinOutput = 2;
-  public static final double chassisVelocityMaxOutput = 2;
+  public static final double chassisVelocityPValue = 5e-5;
+  public static final double chassisVelocityIValue = 1e-6;
+  public static final double chassisVelocityDValue = 0;
+  public static final double chassisVelocityFFValue = 0;
+  public static final double chassisVelocityIZValue = 0;
+  public static final double chassisVelocityMinOutput = -1;
+  public static final double chassisVelocityMaxOutput = 1;
   public static final double chassisSmartMotionPValue = 0;
   public static final double chassisSmartMotionIValue = 0;
   public static final double chassisSmartMotionDValue = 0;
@@ -94,15 +94,13 @@ public class RobotMap {
   public static final double climberMinVel = 0;
   public static final double climberAllowedErr = 0;
   public static final int climberSmartMotionPort = 0;
-  public static final int climberPistonPortA = 0;
-  public static final int climberPistonPortB = 0;
+  public static final int climberPistonPortA = 4;
+  public static final int climberPistonPortB = 5;
   
   //Intake
   public static final int intakeMotorPort = 3; //3 next? previously 8
-  public static final int doubleSolenoidAPort1 = 1;
-  public static final int doubleSolenoidAPort2 = 2;
-  public static final int doubleSolenoidBPort1 = 3;
-  public static final int doubleSolenoidBPort2 = 4;
+  public static final int doubleSolenoidAPort1 = 2;
+  public static final int doubleSolenoidAPort2 = 3;
 
   //Vision 
   public static final double limelightToTarget = 25.7;

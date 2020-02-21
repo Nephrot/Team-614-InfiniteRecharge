@@ -30,6 +30,7 @@ import edu.wpi.first.wpilibj.SPI;
 
 import frc.robot.subsystems.feeder.Feeder;
 import frc.robot.subsystems.climber.Climber;
+import frc.robot.subsystems.compressorcontrol.CompressorControl;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -49,7 +50,7 @@ public class Robot extends TimedRobot {
   public static Feeder m_feeder;
   public static OI m_oi;
 
-  public static Intake m_intake = new Intake();
+  public static Intake m_intake;
   public static Climber m_climber = new Climber();
   public static Serializer m_serializer = new Serializer();
 
@@ -72,13 +73,18 @@ public class Robot extends TimedRobot {
 			DriverStation.reportError("NAVX ERROR: " + e.getMessage(), true);
     }
 
+        
+    pneumatics = new Pneumatics();
     
     m_shooter = new Shooter();
     m_drivetrain = new Drivetrain();
     m_serializer = new Serializer();
     m_limelight = new Vision();
+
+    m_intake = new Intake();
     m_feeder = new Feeder();
     m_oi = new OI();
+   
     
     
     // chooser.addOption("My Auto", new MyAutoCommand());
@@ -87,22 +93,21 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Number", 0);
     m_drivetrain.resetDrivetrain();
 
-    m_led = new AddressableLED(9);
 
-    // Reuse buffer
-    // Default to a length of 60, start empty output
-    // Length is expensive to set, so only set it once, then just update data
-    m_ledBuffer = new AddressableLEDBuffer(60);
-    m_led.setLength(60);
+  //   // Reuse buffer
+  //   // Default to a length of 60, start empty output
+  //   // Length is expensive to set, so only set it once, then just update data
+  //   m_ledBuffer = new AddressableLEDBuffer(60);
+  //   m_led.setLength(60);
 
-    // Set the data
-    m_led.setData(m_ledBuffer);
-    for (int i = 0; i < 60; i++) {
-      // Sets the specified LED to the RGB values for red
-      m_ledBuffer.setRGB(i, 255, 165, 0);
-   }
+  //   // Set the data
+  //   m_led.setData(m_ledBuffer);
+  //   for (int i = 0; i < 60; i++) {
+  //     // Sets the specified LED to the RGB values for red
+  //     m_ledBuffer.setRGB(i, 255, 165, 0);
+  //  }
    
-    m_led.start();
+  //   m_led.start();
   }
 
   /**
@@ -115,7 +120,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    m_led.start();
+    // m_led.start();
   }
 
   /**

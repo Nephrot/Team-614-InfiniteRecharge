@@ -18,7 +18,7 @@ public class DeliverGoalLow extends Command {
 	protected void initialize() {
 		Robot.m_shooter.shooterMotor.set(0);
 		Robot.m_intake.toggleDoubleSolenoidA();
-		Robot.m_intake.toggleDoubleSolenoidB();
+		// Robot.m_intake.toggleDoubleSolenoidB();
 
 	}
 
@@ -36,7 +36,7 @@ public class DeliverGoalLow extends Command {
 	protected void end() {
 		Robot.m_shooter.shooterMotor.set(0);
 		Robot.m_intake.toggleDoubleSolenoidA();
-		Robot.m_intake.toggleDoubleSolenoidB();
+		// Robot.m_intake.toggleDoubleSolenoidB();
 	}
 
 	// Called when another command which requires one or more of the same
@@ -44,6 +44,6 @@ public class DeliverGoalLow extends Command {
 	protected void interrupted() {
 		Robot.m_shooter.shooterMotor.set(0);
 		Robot.m_intake.toggleDoubleSolenoidA();
-		Robot.m_intake.toggleDoubleSolenoidB();
+		// Robot.m_intake.toggleDoubleSolenoidB();
 	}
 }

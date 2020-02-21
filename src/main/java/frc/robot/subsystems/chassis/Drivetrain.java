@@ -5,6 +5,8 @@ import com.revrobotics.CANSparkMax;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.chassis.ArcadeDrive;
+import frc.robot.commands.chassis.ModifiedCurvatureDrive;
 import frc.robot.commands.chassis.OutputCalculator;
 import frc.robot.OI;
 import frc.robot.RobotMap;
@@ -51,19 +53,19 @@ public class Drivetrain extends Subsystem {
         leftMotorB.follow(leftMotorA);
         rightMotorB.follow(rightMotorA);
 
-        leftMotorA.getPIDController().setP(RobotMap.chassisVelocityPValue);
-        leftMotorA.getPIDController().setI(RobotMap.chassisVelocityIValue);
-        leftMotorA.getPIDController().setD(RobotMap.chassisVelocityDValue);
-        leftMotorA.getPIDController().setIZone(RobotMap.chassisVelocityIZValue);
-        leftMotorA.getPIDController().setFF(RobotMap.chassisVelocityFFValue);
-        leftMotorA.getPIDController().setOutputRange(RobotMap.chassisVelocityMinOutput, RobotMap.chassisVelocityMaxOutput);
+        leftMotorA.getPIDController().setP(5e-5);
+        leftMotorA.getPIDController().setI(0);
+        leftMotorA.getPIDController().setD(1e-6);
+        leftMotorA.getPIDController().setIZone(0);
+        leftMotorA.getPIDController().setFF(0);
+        leftMotorA.getPIDController().setOutputRange(-1, 1);
         
-        rightMotorA.getPIDController().setP(RobotMap.chassisVelocityPValue);
-        rightMotorA.getPIDController().setI(RobotMap.chassisVelocityIValue);
-        rightMotorA.getPIDController().setD(RobotMap.chassisVelocityDValue);
-        rightMotorA.getPIDController().setIZone(RobotMap.chassisVelocityIZValue);
-        rightMotorA.getPIDController().setFF(RobotMap.chassisVelocityFFValue);
-        rightMotorA.getPIDController().setOutputRange(RobotMap.chassisVelocityMinOutput, RobotMap.chassisVelocityMaxOutput);
+        rightMotorA.getPIDController().setP(5e-6);
+        rightMotorA.getPIDController().setI(0);
+        rightMotorA.getPIDController().setD(1e-6);
+        rightMotorA.getPIDController().setIZone(0);
+        rightMotorA.getPIDController().setFF(0);
+        rightMotorA.getPIDController().setOutputRange(-1, 1);
 
         outputCalculator = new OutputCalculator(RobotMap.pValue, RobotMap.dValue, RobotMap.vValue,
                  RobotMap.wheelDiameter, RobotMap.ticksInARevolution);
@@ -97,7 +99,8 @@ public class Drivetrain extends Subsystem {
     }
 
     public void initDefaultCommand() {
-        setDefaultCommand(new VelocityDrive());
+        setDefaultCommand(new ArcadeDrive
+        ());
     }
 
     public void resetPath() {
@@ -171,6 +174,7 @@ public class Drivetrain extends Subsystem {
     }
 
     public void velocityBasedDrive(XboxController m_driverController) {
+        SmartDashboard.putNumber("Left Motor A", leftMotorA.getEncoder().getVelocity());
         if ((m_driverController.getY(Hand.kLeft) > 0.05)
                 && (m_driverController.getX(Hand.kRight) > 0.05 || m_driverController.getX(Hand.kRight) < -0.05)) {
             double setPointLeft = Math.sqrt(Math.abs(m_driverController.getY(Hand.kLeft)))
@@ -200,6 +204,7 @@ public class Drivetrain extends Subsystem {
             // double setPointRight = m_driverController.getY(Hand.kLeft)*650;
             leftMotorA.getPIDController().setReference(setPointLeft, ControlType.kVelocity);
             rightMotorA.getPIDController().setReference(setPointRight, ControlType.kVelocity);
+           
 
         } else if ((m_driverController.getY(Hand.kLeft) > 0.05 || m_driverController.getY(Hand.kLeft) < -0.05)) {
             double setPointLeft = Math.sqrt(Math.abs(m_driverController.getY(Hand.kLeft)))

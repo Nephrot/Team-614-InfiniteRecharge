@@ -22,7 +22,7 @@ public class SetPistonIn extends Command {
 	protected void initialize() {
 		// Robot.arm.sparkMaxB.setInverted(true);
 		Robot.m_intake.setDoubleSolenoidA(Robot.m_intake.pistonIn);
-        Robot.m_intake.setDoubleSolenoidB(Robot.m_intake.pistonIn);
+        // Robot.m_intake.setDoubleSolenoidB(Robot.m_intake.pistonIn);
 	}
 
 

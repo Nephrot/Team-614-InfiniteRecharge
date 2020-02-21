@@ -24,7 +24,6 @@ public class Intake extends Subsystem {
    // One Intake Motor, simple speed
    public CANSparkMax intakeMotor;
    public DoubleSolenoid intakeSolenoidA;
-   public DoubleSolenoid intakeSolenoidB;
 
    public DoubleSolenoid.Value pistonIn = DoubleSolenoid.Value.kReverse;
    public DoubleSolenoid.Value pistonOut = DoubleSolenoid.Value.kForward;
@@ -32,30 +31,21 @@ public class Intake extends Subsystem {
    public Intake() {
       intakeMotor = new CANSparkMax(RobotMap.intakeMotorPort, MotorType.kBrushed);
       intakeSolenoidA = new DoubleSolenoid(RobotMap.doubleSolenoidAPort1, RobotMap.doubleSolenoidAPort2);
-      intakeSolenoidB = new DoubleSolenoid(RobotMap.doubleSolenoidBPort1, RobotMap.doubleSolenoidBPort2);
       SmartDashboard.putNumber("Intake: Intake Speed", 0.0);
    }
 
    @Override
    public void initDefaultCommand() {
       // Set the default command for a subsystem here.
-      setDefaultCommand(new CompressorControl());
    }
 
    public DoubleSolenoid.Value getDoubleSolenoidA() {
       return intakeSolenoidA.get();
    }
 
-   public DoubleSolenoid.Value getDoubleSolenoidB() {
-      return intakeSolenoidB.get();
-   }
 
    public void setDoubleSolenoidA(DoubleSolenoid.Value state) {
       intakeSolenoidA.set(state);
-   }
-
-   public void setDoubleSolenoidB(DoubleSolenoid.Value state) {
-      intakeSolenoidB.set(state);
    }
 
    public DoubleSolenoid.Value getOppositeState(DoubleSolenoid.Value solenoid) {
@@ -68,10 +58,6 @@ public class Intake extends Subsystem {
 
    public void toggleDoubleSolenoidA() {
       setDoubleSolenoidA(getOppositeState(getDoubleSolenoidA()));
-   }
-
-   public void toggleDoubleSolenoidB() {
-      setDoubleSolenoidB(getOppositeState(getDoubleSolenoidB()));
    }
 
    public void intakemotorPortSpeed(double speed) {

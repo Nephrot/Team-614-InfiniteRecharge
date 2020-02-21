@@ -21,7 +21,7 @@ public class RunIntakeBasic extends Command {
 	protected void initialize() {
         Robot.m_intake.intakeMotor.set(0);
         Robot.m_intake.setDoubleSolenoidA(Robot.m_intake.pistonOut);
-        Robot.m_intake.setDoubleSolenoidB(Robot.m_intake.pistonOut);
+        // Robot.m_intake.setDoubleSolenoidB(Robot.m_intake.pistonOut);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -38,7 +38,7 @@ public class RunIntakeBasic extends Command {
 	protected void end() {
 		Robot.m_intake.intakeMotor.set(0);
 		Robot.m_intake.setDoubleSolenoidA(Robot.m_intake.pistonIn);
-        Robot.m_intake.setDoubleSolenoidB(Robot.m_intake.pistonIn);
+        // Robot.m_intake.setDoubleSolenoidB(Robot.m_intake.pistonIn);
 	}
 
 	// Called when another command which requires one or more of the same
@@ -46,7 +46,7 @@ public class RunIntakeBasic extends Command {
 	protected void interrupted() {
 		Robot.m_intake.intakeMotor.set(0);
 		Robot.m_intake.setDoubleSolenoidA(Robot.m_intake.pistonIn);
-        Robot.m_intake.setDoubleSolenoidB(Robot.m_intake.pistonIn);
+        // Robot.m_intake.setDoubleSolenoidB(Robot.m_intake.pistonIn);
     }
     
     // protected void pistonToggle() {

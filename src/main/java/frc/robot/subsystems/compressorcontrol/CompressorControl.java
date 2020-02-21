@@ -15,20 +15,12 @@ public class CompressorControl extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.pneumatics.compressor.start();
+		Robot.pneumatics.compressor.stop();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (Robot.pneumatics.compressor.enabled()) {
-			if (RobotController.getBatteryVoltage() < 10.5) {
-				Robot.pneumatics.compressor.stop();
-			}
-		} else {
-			if (RobotController.getBatteryVoltage() >= 10.5) {
-				Robot.pneumatics.compressor.start();
-			}
-		}
+	
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
